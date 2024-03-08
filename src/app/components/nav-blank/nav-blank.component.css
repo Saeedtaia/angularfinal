@@ -1,0 +1,10 @@
+.animationnav {
+  transition: all 1.5s ease-out;
+}
+.when-add {
+  color: #0aad0a;
+  transform: scale(1.8);
+}
+.transition {
+  transition: all 0.5s;
+}

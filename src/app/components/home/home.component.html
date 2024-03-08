@@ -1,0 +1,107 @@
+<section class="my-3">
+  <div class="row g-0">
+    <div class="col-md-10">
+      <div class="">
+        <owl-carousel-o [options]="mainOptions">
+          <ng-template carouselSlide>
+            <img
+              height="400"
+              src="./assets/images/main-slider-1.jpeg"
+              class="w-100"
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              height="400"
+              src="./assets/images/main-slider-2.jpeg"
+              class="w-100"
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              height="400"
+              src="./assets/images/main-slider-3.jpeg"
+              class="w-100"
+            />
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="">
+        <img
+          class="w-100"
+          src="./assets/images/slide-1.jpeg"
+          height="200"
+          alt=""
+        />
+        <img
+          class="w-100"
+          src="./assets/images/slide-2.jpeg"
+          height="200"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<section class="my-3">
+  <owl-carousel-o [options]="categoriesOptions">
+    <ng-container *ngFor="let slide of categories">
+      <ng-template carouselSlide>
+        <img
+          height="270"
+          [src]="slide.image"
+          class="w-100"
+          [alt]="slide.name"
+        />
+        <h3 class="h6 text-main text-center pt-3">{{ slide.name }}</h3>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+<section class="py-5">
+  <h2 class="my-5 text-capitalize text-center fw-bold popular mx-auto">
+    popular prouducts
+  </h2>
+  <input
+    type="search"
+    class="form-control w-50 mx-auto my-5"
+    placeholder="Search..."
+    [(ngModel)]="searchterm"
+  />
+  <div class="row g-4">
+    <div
+      class="col-md-3"
+      *ngFor="let item of prouductData.slice(0, 12) | search : searchterm"
+    >
+      <div class="product coursor-pointer p-3">
+        <div class="mb-3" [routerLink]="['/details', item._id]">
+          <img [src]="item.imageCover" class="w-100 mb-3" [alt]="item.title" />
+          <div class="">
+            <h3 class="h6 text-main">
+              {{ item.category.name }}
+            </h3>
+            <h4 class="">{{ item.title | textSlice : 0 : 2 }}</h4>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">{{ item.price | currency : " EGP " }} </span>
+            <div class="">
+              <i class="fas fa-star me-1 text-warning"></i>
+              <span class="text-muted">{{ item.ratingsAverage }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <button (click)="addToCart(item._id)" class="btn-main w-75 font-sm">
+            Add Prouduct
+          </button>
+          <i
+            (click)="addToWishlist(item._id)"
+            class="fas fa-heart text-danger fa-2x heart"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

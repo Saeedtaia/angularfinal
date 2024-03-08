@@ -1,0 +1,10 @@
+.half-yellow-black {
+  background-image: linear-gradient(to right, #ffc107 50%, black 50%);
+  background-clip: text;
+  color: transparent;
+}
+.lesshalf-yellow-black {
+  background-image: linear-gradient(to right, #ffc107 25%, black 75%);
+  background-clip: text;
+  color: transparent;
+}

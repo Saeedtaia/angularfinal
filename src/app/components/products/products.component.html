@@ -1,0 +1,100 @@
+<section class="py-5">
+  <h2 class="mb-5 text-capitalize text-center fw-bold popular mx-auto">
+    All Products
+  </h2>
+  <div class="text-center">
+    <pagination-controls
+      id="productPage"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel=""
+      nextLabel=""
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+  </div>
+  <div class="row g-4 justify-content-center">
+    <div
+      class="col-lg-3 col-md-4 col-xl-2"
+      *ngFor="
+        let item of prouductData
+          | paginate
+            : {
+                id: 'productPage',
+                itemsPerPage: pageSize,
+                currentPage: curruntpage,
+                totalItems: total
+              }
+      "
+    >
+      <div class="product coursor-pointer p-3">
+        <div class="mb-3" [routerLink]="['/details', item._id]">
+          <img [src]="item.imageCover" class="w-100 mb-3" [alt]="item.title" />
+          <div class="">
+            <h4 class="font-sm">{{ item.title | textSlice : 0 : 2 }}</h4>
+            <h3 class="h6 text-main">
+              {{ item.category.name }}
+            </h3>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold h6"
+              >{{ item.price | currency : " EGP " }}
+            </span>
+          </div>
+          <div
+            class="d-flex justify-content-between align-items-center text-nowrap"
+          >
+            <div class="">
+              <i
+                [ngClass]="{
+                  'text-warning': item.ratingsAverage >= 1,
+                  'half-yellow-black': item.ratingsAverage >= 0.5,
+                  'lesshalf-yellow-black': item.ratingsAverage < 0.5
+                }"
+                class="fas fa-star me-1"
+              ></i>
+              <i
+                [ngClass]="{
+                  'text-warning': item.ratingsAverage >= 2,
+                  'half-yellow-black': item.ratingsAverage >= 1.5
+                }"
+                class="fas fa-star me-1"
+              ></i>
+              <i
+                [ngClass]="{
+                  'text-warning': item.ratingsAverage >= 3,
+                  'half-yellow-black': item.ratingsAverage >= 2.5
+                }"
+                class="fas fa-star me-1"
+              ></i>
+              <i
+                [ngClass]="{
+                  'text-warning': item.ratingsAverage >= 4,
+                  'half-yellow-black': item.ratingsAverage >= 3.5
+                }"
+                class="fas fa-star me-1"
+              ></i>
+              <i
+                [ngClass]="{
+                  'text-warning': item.ratingsAverage == 5,
+                  'half-yellow-black': item.ratingsAverage >= 4.5
+                }"
+                class="fas fa-star me-1"
+              ></i>
+            </div>
+            <span class="text-muted">{{ item.ratingsAverage }}</span>
+          </div>
+        </div>
+        <button (click)="addToCart(item._id)" class="btn btn-success w-100">
+          Add Prouduct
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

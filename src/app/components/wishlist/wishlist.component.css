@@ -1,0 +1,7 @@
+.product:hover .heart {
+  transform: translatex(0);
+}
+.product .heart {
+  transition: transform 0.5s 0.4s;
+  transform: translatex(160%);
+}

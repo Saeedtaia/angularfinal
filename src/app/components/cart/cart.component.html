@@ -1,0 +1,61 @@
+<section class="w-75 mx-auto bg-main-light p-3 rounded-3 my-2">
+  <h1>Shop Cart</h1>
+  <p class="text-main">
+    Total Price : {{ cartData.totalCartPrice | currency : " EGP " }}
+  </p>
+
+  <div class="row border-bottom pb-2" *ngFor="let item of cartData.products">
+    <div class="col-md-1">
+      <div class="">
+        <img [src]="item.product.imageCover" class="w-100" alt="" />
+      </div>
+    </div>
+    <div class="col-md-11">
+      <!-- details -->
+      <div class="d-flex justify-content-between">
+        <div class="">
+          <h3 class="h5">{{ item.product.title }}</h3>
+          <p class="text-main m-0">
+            Price : {{ item.price | currency : " EGP " }}
+          </p>
+          <button
+            (click)="deleteItemCart(item.product._id)"
+            class="btn p-0 m-0"
+          >
+            Remove <i class="fa-regular fa-trash-can text-danger"></i>
+          </button>
+        </div>
+        <!-- count -->
+        <div class="d-flex justify-content-between align-items-center">
+          <button
+            (click)="
+              changeCount(item.product._id, item.count + 1);
+              item.count = item.count + 1
+            "
+            class="btn btn-outline-success"
+          >
+            <i class="fas fa-plus"></i>
+          </button>
+          <span class="mx-2 fs-4">{{ item.count }}</span>
+          <button
+            [disabled]="item.count <= 1"
+            (click)="
+              changeCount(item.product._id, item.count - 1);
+              item.count = item.count - 1
+            "
+            class="btn-mein"
+          >
+            <i class="fas fa-minus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    *ngIf="cartData.totalCartPrice !== 0"
+    class="btn-main my-3"
+    [routerLink]="['/paymentdata', cartData._id]"
+  >
+    Online Payment <img src="./assets/images/visa-1.svg" class="w-25" />
+  </button>
+</section>

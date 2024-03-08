@@ -1,0 +1,101 @@
+<section class="p-3 mb-2 bg-main-light rounded-3 w-50 mx-auto">
+  <h1 class="text-center fw-bold mb-3">Update Password</h1>
+  <form [formGroup]="upadatePassword" (ngSubmit)="submitForm()">
+    <div class="mb-2">
+      <label for="currentPassword">currentPassword : </label>
+      <input
+        type="password"
+        class="form-control"
+        id="currentPassword"
+        formControlName="currentPassword"
+        #currentPassword
+      />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          upadatePassword.get('currentPassword')?.errors &&
+          (upadatePassword.get('currentPassword')?.touched ||
+            currentPassword.value.length > 0)
+        "
+      >
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('currentPassword')?.getError('required')"
+        >
+          currentPassword is required
+        </p>
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('currentPassword')?.getError('pattern')"
+        >
+          currentPassword Not Valid
+        </p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="password">password : </label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        #password
+      />
+      <div
+        *ngIf="
+          upadatePassword.get('password')?.errors &&
+          (upadatePassword.get('password')?.touched ||
+            password.value.length > 0)
+        "
+        class="alert alert-danger mt-1"
+      >
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('password')?.getError('required')"
+        >
+          password is required
+        </p>
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('password')?.getError('pattern')"
+        >
+          password must start with upperCase then from 6 to 10
+        </p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="rePassword">rePassword : </label>
+      <input
+        type="password"
+        class="form-control"
+        id="rePassword"
+        formControlName="rePassword"
+        #rePassword
+      />
+      <div
+        *ngIf="
+          upadatePassword.get('rePassword')?.errors &&
+          (upadatePassword.get('rePassword')?.touched ||
+            rePassword.value.length > 0)
+        "
+        class="alert alert-danger mt-1"
+      >
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('rePassword')?.getError('required')"
+        >
+          rePassword is required
+        </p>
+        <p
+          class="text-capitalize"
+          *ngIf="upadatePassword.get('rePassword')?.getError('passwordMatch')"
+        >
+          Repassword not match Password
+        </p>
+      </div>
+    </div>
+    <div class="">
+      <button class="btn-main me-auto">Submit</button>
+    </div>
+  </form>
+</section>

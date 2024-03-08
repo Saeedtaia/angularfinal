@@ -1,0 +1,173 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid animationnav" [ngStyle]="getStyleObject()">
+    <a
+      class="navbar-brand fs-3 me-4 d-flex align-items-center justify-content-between"
+      routerLink="home"
+    >
+      <img src="./assets/images/freshcart-logo.svg" class="w-100" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="home"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="cart"
+            >cart</a
+          >
+        </li>
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="favProducts"
+            >Wish List</a
+          >
+        </li>
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="products"
+            >products</a
+          >
+        </li>
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="brands"
+            >brands</a
+          >
+        </li>
+        <li class="nav-item me-4">
+          <a
+            class="nav-link p-2"
+            aria-current="page"
+            routerLinkActive="active-link"
+            routerLink="categories"
+            >categories</a
+          >
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-link">
+          <ul
+            class="list-unstyled d-flex align-items-center justify-content-center"
+          >
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fa-solid fa-user text-main"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item"
+                    ><p class="coursor-pointer" routerLink="/updatePassword">
+                      Update Password
+                    </p></a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                    ><p class="coursor-pointer" routerLink="/updateYourData">
+                      Update Your Data
+                    </p></a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item me-2 fw-bold">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><div class="nav-item position-relative">
+                  <a class="nav-link position-relative">
+                    <p class="badge bg-info number rounded-circle">
+                      {{ numberOfitems }}
+                    </p>
+                    <i class="fa-solid fa-cart-shopping transition text-main">
+                    </i>
+                  </a>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-instagram insta"></i
+              ></a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-facebook-f text-primary"></i
+              ></a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-tiktok text-black"></i
+              ></a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-twitter text-info"></i
+              ></a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-linkedin-in text-primary"></i
+              ></a>
+            </li>
+            <li class="nav-item me-2">
+              <a class="nav-link coursor-pointer" aria-current="page"
+                ><i class="fab fa-youtube text-danger"></i
+              ></a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span
+            (click)="logOut()"
+            class="nav-link coursor-pointer btn btn-outline-danger border-0"
+            aria-current="page"
+          >
+            SignOut
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<button
+  class="btn btn-outline-success position-fixed bottom-0 end-0 mb-3 me-3 border-3 fs-4 rounded-circle"
+  (click)="flootingActionBtn()"
+  *ngIf="scrollVlaue > 150"
+>
+  <i class="fas fa-angle-up"></i>
+</button>
