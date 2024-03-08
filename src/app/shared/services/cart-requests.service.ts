@@ -59,7 +59,7 @@ export class CartRequestsService {
 
   checkOut(id: string, data: object): Observable<any> {
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://saeedtaia.github.io/E-Commerce/`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://saeedtaia.github.io/angularfinal`,
       {
         shippingAddress: data,
       }
